@@ -39,18 +39,52 @@ https://developer.android.com/studio
 
 - 프로젝트가 만들어졌습니다.
 
+##  앱 작동을 위한 매니페스트 파일설정
 
-## 이름 바꾸기
+- 매니페스트(manifests)는 안드로이드 애플리케이션의 구성 요소 및 애플리케이션에 대한 정보를 담고 있는 XML 파일입니다.
+```Java
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Test"
+        tools:targetApi="31" />
+
+</manifest>
+```
+
+- 앱을 처음 만들면 다음과 같이 구성되어 있습니다.
+
+- 앱을 동작하는 
+
+- 
+
+
+## 앱 이름 바꾸기
 
 - 앱의 이름을 변경할 수 있습니다
-- 
-![image](https://github.com/ijd1236/Android/assets/130967884/c0f51b72-cada-43ee-8880-cf758ccfa1d1)
+
+
+![image](https://github.com/ijd1236/Android/assets/130967884/b2353e39-15bd-46f8-8c1a-8ffdb5432aed)
+
 
 - app에 manifests -> AndroidManifest.xml 에서 android:label을 클리하고 컨트롤+엔터를 눌러들어갑니다.
-- 
+ 
 ![image](https://github.com/ijd1236/Android/assets/130967884/73741203-e7a8-4f77-814a-c2b1ef8cf329)
 
 - 해당 부분이 앱 이름입니다. 초기 값은 프로젝트 이름으로 되어있으나 앱 이름을 수정해 줄 수 있습니다.
+
+
+
+## 설정
 
 ## 화면 개발
 
