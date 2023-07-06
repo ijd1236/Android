@@ -52,7 +52,7 @@ https://developer.android.com/studio
 
 - 해당 부분이 앱 이름입니다. 초기 값은 프로젝트 이름으로 되어있으나 앱 이름을 수정해 줄 수 있습니다.
 
-## 개발
+## 화면 개발
 
 - 안드로이드 순서는 화면(XML)-로직개발(JAVA)순으로 진행됩니다
 - 화면 개발을 위해 사용할 폴더와 파일들을 넣어줍니다
@@ -65,6 +65,36 @@ https://developer.android.com/studio
 - layout폴더의 activity_main 에서 에서 화면을 보면서 여러가지 설정할 수 있습니다
 - raw는 새로만든 폴더로 지금은 음향 데이터가 저장됐습니다.
 - values에서는 설정한 색, 이름 등이 저장됩니다
+
+- res - > layout 폴더에 acctivity_main.xml에서 눈으로 보며 화면을 개발하고 여러 기능을 넣을 수 있습니다
+
+  ![image](https://github.com/ijd1236/Android/assets/130967884/bddefe5d-c064-4435-944a-e0cfe88570f7)
+
+![image](https://github.com/ijd1236/Android/assets/130967884/b7b269e3-1507-4929-aabd-6961f3228453)
+
+- 좌측 Palette 에서 여러 기능들을 추가할 수 있습니다
+
+![image](https://github.com/ijd1236/Android/assets/130967884/e7fa0653-31ba-4e8f-a7f1-80be3843c52c)
+
+- 우측 Attribute에서는 추가한 기능들의 세부 설정을 할 수 있습니다
+
+- 택스트를 설정해보겠습니다
+
+![image](https://github.com/ijd1236/Android/assets/130967884/b73750fc-8b58-425a-89dd-caa880db063b)
+
+- Palette 의 Text -> TextView를 드래그해서 앱 화면에 넣으면 다음과 같이 추가됩니다.
+
+![image](https://github.com/ijd1236/Android/assets/130967884/686a0cbd-66ad-4d9f-95b6-ad61db9a299b)
+
+- 생성한 TextView를 선택하고 우측 Attribute에서 해당 기능을 설정합니다
+-  Layout에서 기+ 버튼을 눌러 해당 기능을 연결하고, 크기를 설정해줄 수 있습니다 (기능 키그 설정은 dp를 붙여야합니다.)
+- 그리고 크기를 설정할때 wrap_content와 match_parent 라는게 있는데 wrap_content는 폭과 높이가 글자가 꼭 들어갈 정도로 설정하고
+- match_parent는 화면 전체 길이에 맞춥니다.
+
+![image](https://github.com/ijd1236/Android/assets/130967884/9adf6064-465d-46e7-8e93-8c58eca65fc4)
+
+- CommonAttributes에서 텍스트 내용을 수정할 수 있습니다.
+- 
 
 
 ## 화면 개발하기
