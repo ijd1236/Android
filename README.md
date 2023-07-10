@@ -128,10 +128,95 @@ https://developer.android.com/studio
 ![image](https://github.com/ijd1236/Android/assets/130967884/9adf6064-465d-46e7-8e93-8c58eca65fc4)
 
 - CommonAttributes에서 텍스트 내용을 수정할 수 있습니다.
+
+
+
+
+
+## 여러화면 구현하기
+
+
+- 앱에서 여러 화면을 구현하게합니다 예를들어 버튼을 누르면 다른 화면으로 넘어가고 뒤로가기를 누르면 다시 이전 화면으로 돌아오게 합니다.
+
+- 그러기 위해선 앱을 작동했을 때 어떻게 작동하는지 알아야합니다
+
+- 우리가 앱을 작동했을때 액티비티에서 실행되는 메서드들이 있는데 이를 생명주기(Lifecycle) 메서드라고 합니다
+
+![image](https://github.com/ijd1236/Android/assets/130967884/498f8ffc-2346-4748-915f-ac9670008a9d)  
+구성
+
+
+
+- 우리가 앱을 실행하면 onCreate, onStart, onResume 메서드가 작동합니다
+
+- onCreate()는 티비티가 처음 생성될 때 호출됩니다. 일반적으로 액티비티의 초기화 작업이나 UI 구성 요소의 설정 등을 수행합니다
+
+- onStart()는 액티비티가 사용자에게 보여지기 전에 호출됩니다. 액티비티가 뷰를 생성하고 사용자에게 보여지기 직전에 필요한 작업을 수행할 수 있습니다
+
+- onResume()은 액티비티가 전면에 나타나고 사용자와 상호작용하기 시작할 때 호출됩니다. 액티비티가 활성화된 상태이며 사용자 입력을 처리하거나 외부 리소스를 가져올 수 있는 위치입니다.
+
+- 위에 세 메서드가 앱을 실행햇을때 실행되는 메서드들입니다
+
+- 앱에서 다른 화면으로 넘어가거나 앱을 잠시 내리거나 종료했을 때 실행되는 메서스들도 있습니다.
+
+- onPause()는 액티비티가 일시적으로 중지되고 다른 액티비티가 화면을 가릴 때 호출됩니다. 현재 상태를 저장하거나 사용자 입력을 중지하는 등의 작업을 수행합니다.
+
+- onStop()은 티비티가 더 이상 사용자에게 보여지지 않을 때 호출됩니다. 일반적으로 액티비티의 리소스를 정리하거나 실행 중인 애니메이션 등을 중지하는 작업을 수행합니다.
+
+- 보통 앱에서 다른 화면으로 넘어갈 때 이 두 메서드가 실행됩니다
+
+- onDestroy()는 액티비티가 소멸될 때 호출됩니다. 액티비티와 관련된 모든 리소스를 해제하고 메모리를 정리하는 작업을 수행합니다.
+
+-  위의 세 메서드가 다른 화면으로 이동하거나 앱을 종료할 때 실행되는 메서스들입니다.
+
+### 구현 예시
+
+![image](https://github.com/ijd1236/Android/assets/130967884/d22abd25-3c3f-45b5-a8b0-fd5a03b69f1b)  ![image] 
+ (https://github.com/ijd1236/Android/assets/130967884/767723c2-1023-4fe9-ab06-c45d4fd5731e)
+
+- 첫번째 화면에서 버튼을 누르면 두번째 화면으로 넘어가게 구현을 하려고 합니다
+
+- 이 작업을 위해선 첫번째 액티비티에서 애플리케이션 구성 요소 간에 통신하고 작업을 수행하기 위한 메시지 객체인 Intent를 사용할 필요가 있습니다.
 - 
 
+```Java
+    Button button;
 
-## 화면 개발하기
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
+
+        button =findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // SecondActivity를 실행시키고 싶다.
+
+                // 새로운 액티비티를 실행시키고 싶으면
+                // 인텐트를 만들어야 한다.
+                // 이 액티비티가 다른 액티비티를 실행시킨다 라는 의미로
+                // 파라미터를 설정해준다
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+
+            }
+        });
+```
+- 다음과 코드를 작성하면
+- 첫번째 화면에서 버튼을 누르면 두번째 화면으로 넘어갈 수 있습니다
+- 위에서 언급한 생명주기(Lifecycle) 메서드를 입력한 상태라면
+- 첫번째 화면에서 두번째 화면으로 넘어갈때
+- 첫번째 액티비티(화면)는 onPause(정지)메서드가 실행되고
+- 두번째 메서드의 화면을 나타낼때 실행되는 세개의 메서드 Create, Start, Resume 메서드가 실행된후 첫번째 메서드에
+- 화면이 보여지지 않을때 실행되는 Stop() 메서드가 실행됩니다
+- 뒤로가기 버튼을 눌러 첫번째 화면으로 돌아오면
+- 두번째 액티비티에서 onPause(정지), Stop()가 실행되고 
+- 첫번째 액티비티에  Start, Resume메서드가 실행된후(Create는 처음 화면 구현때만 실행됩니다.)
+- 두번째 액티비티를 완전히 소멸시키는 onDestroy()가 실행됩니다.
+- 앱을 완전히 종료하면 첫번째 액티비티에 onPause(정지), Stop(), onDestroy() 가 실행되며 앱이 완전 종료됩니다.
+- 
 
 
