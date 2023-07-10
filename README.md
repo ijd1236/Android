@@ -171,8 +171,10 @@ https://developer.android.com/studio
 
 ### 구현 예시
 
-![image](https://github.com/ijd1236/Android/assets/130967884/d22abd25-3c3f-45b5-a8b0-fd5a03b69f1b)  ![image] 
- (https://github.com/ijd1236/Android/assets/130967884/767723c2-1023-4fe9-ab06-c45d4fd5731e)
+![image](https://github.com/ijd1236/Android/assets/130967884/d22abd25-3c3f-45b5-a8b0-fd5a03b69f1b)
+
+![image](https://github.com/ijd1236/Android/assets/130967884/db4e5fdd-49db-4a09-8ef8-1608bf8c099c)
+
 
 - 첫번째 화면에서 버튼을 누르면 두번째 화면으로 넘어가게 구현을 하려고 합니다
 
