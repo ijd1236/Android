@@ -223,5 +223,72 @@ https://developer.android.com/studio
   
 - 앱을 완전히 종료하면 첫번째 액티비티에 onPause(정지), Stop(), onDestroy() 가 실행되며 앱이 완전 종료됩니다.
 
+### 데이터 전달하기
+
+- 첫번째 액티비티(화면)에서 입력한 값을 두번째 화면에 전달하도록 하는 작업을 수행합니다.
+- intent 객체에 데이터를 전달하는 메서드 putExtra()를 사용합니다.
+  
+![image](https://github.com/ijd1236/Android/assets/130967884/e2f1bfae-e332-489a-bdfa-42f3f9c1a6da)
+
+- 첫번째 액티비티에 이름과 나이를 입력하면 두번째 액티비티에 그 내용을 출력하도록 합니다.
+
+```Java
+// 첫번째 액티비티
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name = editName.getText().toString().trim();
+                String strAge = editAge.getText().toString().trim();
+
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                int intAge=  Integer.parseInt(strAge);
+
+                // 데이터를 전달하기 위해서, 인텐트에 담아줍니다.
+
+                intent.putExtra("name",name);
+
+                intent.putExtra("age",intAge);
+            }
+        });
+
+
+```Java
+
+// 두번째 액티비티
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+
+
+        Log.i("LIFE SECOND", "두번째 액티비티의 onCreate 실행");
+
+        // 받아오는 데이터가 있으면, 데이터를 받아온다.
+        String name = getIntent().getStringExtra("name");  // getIntent() 첫번째 액티비티에서 intent에 설정한 키값을 이용해서 데이터를 가져옵니다
+        int age = getIntent().getIntExtra("age", 0);       // get(형태)Extra를 사용할땐 형식을 맞춰줘야합니다.
+        txtContent = findViewById(R.id.txtContent);
+        txtFuture = findViewById(R.id.txtFuture);
+        txtContent.setText("이름은"+name+"이고, 나이는"+age+"입니다");
+
+        txtFuture.setText("10년후는"+(age+10)+"입니다");
+
+    }
+
+- 다음과 같은 코드를 입력하면
+
+![image](https://github.com/ijd1236/Android/assets/130967884/f5955dd5-86ea-4e8a-8503-7172c60f02e7)
+
+- 첫번째 액티비티에 정보를 입력하고 버튼을 누르면
+
+
+![image](https://github.com/ijd1236/Android/assets/130967884/307dbd2e-7c56-4dbd-88f5-d24ebcd7cbf3)
+
+- 두번째 액티비티에 다음과 같이 출력됩니다
+
+
+
+
 
 
