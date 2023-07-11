@@ -129,7 +129,12 @@ https://developer.android.com/studio
 
 - CommonAttributes에서 텍스트 내용을 수정할 수 있습니다.
 
+- 이외 여러가지 화면 설정이 가능합니다.
 
+
+  ## 로직 개발
+
+  
 
 
 
@@ -275,6 +280,7 @@ https://developer.android.com/studio
         txtFuture.setText("10년후는"+(age+10)+"입니다");
 
     }
+```
 
 - 다음과 같은 코드를 입력하면
 
@@ -285,8 +291,80 @@ https://developer.android.com/studio
 
 ![image](https://github.com/ijd1236/Android/assets/130967884/307dbd2e-7c56-4dbd-88f5-d24ebcd7cbf3)
 
-- 두번째 액티비티에 다음과 같이 출력됩니다
+- 두번째 액티비티에 다음과 같이 출력됩니다.
 
+### 양방향 데이터 전달하기
+
+- 단반향 데이터 전달이 아닌 양방향으로 데이터를 전달하는 방식입니다
+```Java
+    ActivityResultLauncher<Intent> launcher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            // 데이터를 받아오는 코드는, 여기에다만 작성하면된다.
+                            if(result.getResultCode()  == 1){
+                                int futuerAge = result.getData().getIntExtra("data", 0);
+                                txtResult.setText(""+ futuerAge);
+
+                            }
+
+                        }
+                    });
+
+```
+- 다음과 같은 코드를 사용합니다
+- ActivityResultLauncher를 생성하고  registerForActivityResult() 메서드를 사용하여 이를 등록하는 코드입니다.
+- ActivityResultLauncher는 액티비티나 프래그먼트에서 다른 액티비티나 프래그먼트를 시작하고 그 결과를 처리하는 데 사용됩니다.
+- ActivityResultContracts.StartActivityForResult()를 사용하여 다른 액티비티를 시작하고, 그 결과를 처리하는 콜백인 ActivityResultCallback을 정의하여 등록합니다.
+- registerForActivityResult() 메서드는 내부적으로 새로운 인스턴스를 생성하고, 해당 인스턴스를 반환하여 ActivityResultLauncher를 초기화합니다.
+- new 키워드를 사용하여 새로운 인스턴스를 생성하는 것은 이 초기화 작업을 진행하는 과정입니다
+```java
+    @Override
+    public void onBackPressed() {
+
+        // 백버튼을 눌렀을때 처리해주는 함수
+
+        Log.i("LIFE SECOND", "두번째 액티비티의 onBackPressd 실행");
+
+        // 나이를 10 더한 후에, 이 액티비티를 실행한 액티비티에게 데이터를 전달
+
+        int data = age +10;
+
+        Intent intent = new Intent();
+        intent.putExtra("data",data);
+
+
+        setResult(1, intent);
+
+        super.onBackPressed();
+```
+
+
+### 데이터를 저장하고 가져오기
+
+- 데이타를 전달하는게 아니라저장하고 가져오는 방식을 쓸 수 있습니다
+- 이땐 SharedPreferences API를 사용합니다
+
+```Java
+                SharedPreferences sp = getSharedPreferences("Register_App",MODE_PRIVATE);
+                SharedPreferences.Editor editor =sp.edit();
+                editor.putString("email", email);
+                editor.putString("password", password1);
+```
+
+- 다음과 같이 코드를 입력해서 객체를 생성하고 (이미 만들어진 메서드가 있기 때문에 new를 사용하지 않습니다)
+- 객체 안에 데이터를 저장합니다 
+
+```Java
+
+        SharedPreferences sp = getSharedPreferences("Register_App", MODE_PRIVATE);
+        String email =sp.getString("email","");
+
+```
+
+- 이후 저장된 데이터를 불러올 액티비티에서 다음과 같은 코드를 입력해 저장된 데이터를 불러옵니다.
+- 
 
 
 
