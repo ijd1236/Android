@@ -364,7 +364,28 @@ https://developer.android.com/studio
 ```
 
 - 이후 저장된 데이터를 불러올 액티비티에서 다음과 같은 코드를 입력해 저장된 데이터를 불러옵니다.
+
+1. SQLite3 데이터베이스 활용하는 방법
+  a. SQLiteOpenHelper 클래스를 상속받아 처리하는 방법
+3. 메뉴 아이콘 이미지 만드는 방법
+4. RecyclerView 와 Adapter 를 이용하여 리스트를 화면에 표시하는 방법
+5. 리사이클러뷰 어댑터에서, 새로운 액티비티를 실행하는 방법 a. Context
+6. 리사이클러뷰에서, 몇번째 행을 눌렀는지 알 수 있는, 어댑터의 함수
+a. getAdapterPosition()
+7. 다른 액티비티로 데이터 전달시, 클래스의 객체를 전달하는 방법.
+a. Serializable, putExtra(), getSerializableExtra()
+
+## RecyclerView 사용하기
+
+- RecyclerView는 안드로이드에서 리스트나 그리드와 같은 아이템 목록을 표시하기 위해 사용되는 위젯입니다. RecyclerView는 뷰의 재활용, 스크롤링 최적화, 유연한 레이아웃 관리 등 다양한 기능을 제공합니다.
+
+![image](https://github.com/ijd1236/Android/assets/130967884/4427283d-3b4d-461b-88be-7f987fa2ba93)
+
+- 다음과 같이 저장한 리스트를 출력 할 수 있게 만듭니다.
 - 
+
+
+
 
 
 
