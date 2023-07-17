@@ -319,6 +319,8 @@ https://developer.android.com/studio
 - ActivityResultContracts.StartActivityForResult()를 사용하여 다른 액티비티를 시작하고, 그 결과를 처리하는 콜백인 ActivityResultCallback을 정의하여 등록합니다.
 - registerForActivityResult() 메서드는 내부적으로 새로운 인스턴스를 생성하고, 해당 인스턴스를 반환하여 ActivityResultLauncher를 초기화합니다.
 - new 키워드를 사용하여 새로운 인스턴스를 생성하는 것은 이 초기화 작업을 진행하는 과정입니다
+- startActivity(intent) 가 아닌 launcher.launch(intent)를 사용해 실행해야합니다.
+
 ```java
     @Override
     public void onBackPressed() {
