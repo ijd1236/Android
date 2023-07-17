@@ -385,6 +385,8 @@ a. Serializable, putExtra(), getSerializableExtra()
 
 - 다음과 같이 저장한 리스트를 출력 할 수 있게 만듭니다.
 
+
+
 ## 액션바 수정하기
 
 ![image](https://github.com/ijd1236/Android/assets/130967884/bd4ee546-01a5-4fdd-8b6d-6c28fa410f2c)
@@ -397,7 +399,51 @@ a. Serializable, putExtra(), getSerializableExtra()
 
 ## 액션바에 아이콘만들기
 
+- 액션바에 아이콘을 만들고 아이콘을 클릭하면 입력한 기능을 수행하도록 합니다.
+![image](https://github.com/ijd1236/Android/assets/130967884/183a1fbe-3d14-4b0a-89f5-a0054748a65e)
 
+- 먼저 res에서 폴더를 하나 생성한 다음에 resource 파일도 생성해줍니다
+
+![image](https://github.com/ijd1236/Android/assets/130967884/7b3bb63f-05e3-4ff1-82fb-7cde5ebe67d6)
+
+- 여기서 메뉴 아이디 설정, 타이틀 설정, 아이콘 설정, 언제보일지 설정을 할 수 있습니다.
+
+### 아이콘 기능 설정
+```Java
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // 액션바에 메뉴가 나오도록 설정한다.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+
+
+    }
+```
+
+- 다음 코드로 액션바에 메뉴(아이콘))이 나오게 합니다.
+
+```Java
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // 유저가 누른것이 +아이콘인 경우, AddActivity실행
+        int itemId = item.getItemId();
+        if(itemId == R.id.menuAdd){
+            Intent intent = new Intent(MainActivity.this, AddActivity.class);
+            launcher.launch(intent);
+        }else if(itemId == R.id.menuAbout){
+
+        }else if(itemId == R.id.menuShare){
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+```
+
+- 다음과 같은 코드로 아이콘을 클릭시 실행될 코드들을 설정합니다.
+  
+
+   
 
 
 
