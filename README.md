@@ -384,7 +384,7 @@ a. Serializable, putExtra(), getSerializableExtra()
 ![image](https://github.com/ijd1236/Android/assets/130967884/4427283d-3b4d-461b-88be-7f987fa2ba93)
 
 - 다음과 같이 저장한 리스트를 출력 할 수 있게 만듭니다.
-- 
+
 ## 액션바 수정하기
 
 ![image](https://github.com/ijd1236/Android/assets/130967884/bd4ee546-01a5-4fdd-8b6d-6c28fa410f2c)
@@ -394,8 +394,8 @@ a. Serializable, putExtra(), getSerializableExtra()
 - 기본은 앱의 이름과 동일하지만
 
 - onCreate함수 부분에 getSupportActionBar().setTitle() 를 사용하여 액션바 이름을 수정할 수 있습니다.
-- 
 
+## 액션바에 아이콘만들기
 
 
 
